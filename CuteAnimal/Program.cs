@@ -6,7 +6,14 @@ namespace CuteAnimal
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
+
+            Cat cat01 = new Cat("Sam");
+            Cat cat02 = new Cat("Boris");
+
+            
+
+
         }
     }
 }
