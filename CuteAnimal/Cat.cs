@@ -72,8 +72,9 @@ namespace CuteAnimal
         /// </summary>
         public void Eat()
         {
-            if(Energy < 40 || moodStatus == Mood.IgnoringYou)
+            if(Energy >= 30 && Energy < 59 || moodStatus == Mood.IgnoringYou)
             {
+                Console.WriteLine();
                 Console.WriteLine($"Cat: {Name} is eating.");
                 Energy += 20;
             }
@@ -84,8 +85,9 @@ namespace CuteAnimal
         /// </summary>
         public void Sleep()
         {
-            if(Energy < 10 || moodStatus == Mood.Grumpy)
+            if(Energy >= 1 && Energy < 30 || moodStatus == Mood.Grumpy)
             {
+                Console.WriteLine();
                 Console.WriteLine($"Cat: {Name} is sleeping.");
                 Energy += 40;
             }
@@ -96,9 +98,10 @@ namespace CuteAnimal
         /// </summary>
         public void Meow()
         {
-            if (moodStatus == Mood.Happy || moodStatus == Mood.IgnoringYou)
+            if (moodStatus == Mood.Happy || Energy > 60 && Energy < 80)
             {
-                Console.WriteLine($"Cat: {Name} is 'Meowing'.");
+                Console.WriteLine();
+                Console.WriteLine($"Cat: {Name} is happily 'Meowing'.");
             }
             
         }
@@ -108,11 +111,13 @@ namespace CuteAnimal
         /// </summary>
         public void Play()
         {
-            if(Energy > 70 || Energy <= 100 && moodStatus == Mood.HyperActive)
+            if(Energy >= 80 || Energy <= 100 && moodStatus == Mood.HyperActive)
             {
-                Console.WriteLine($"Cat: {Name} is playing with plastic ball.");
-
+                Console.WriteLine();
+                Console.WriteLine($"Cat: {Name} is playing with plastic ball.\n" +
+                    $" Energy = {Energy}%");
                 Energy -= 50;
+                Console.WriteLine($"{Energy}%");
             }
         }
     }

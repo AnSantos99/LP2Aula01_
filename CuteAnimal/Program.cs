@@ -14,15 +14,17 @@ namespace CuteAnimal
             Console.WriteLine("\tList of Cats:\n");
 
             // Write down the name and the energy percentage of each cat object
-            Console.WriteLine($"Cat: {cat01.Name} with {cat01.Energy}% of "+
+            Console.WriteLine($"Cat: {cat01.Name} has {cat01.Energy}% of "+
                 $"energy.");
-            Console.WriteLine($"Cat: {cat02.Name} with {cat02.Energy}% of "+
+            Console.WriteLine($"Cat: {cat02.Name} has {cat02.Energy}% of "+
                 $"energy.");
 
             Console.WriteLine("=============================");
 
+            
             // Print out a specific action if condition is met according to the
             // status of the energy and mood.
+
             cat01.Eat();
             cat02.Eat();
 
@@ -34,6 +36,12 @@ namespace CuteAnimal
 
             cat01.Play();
             cat02.Play();
+            
+            
+                
+            
+            
+            
 
         }
     }
