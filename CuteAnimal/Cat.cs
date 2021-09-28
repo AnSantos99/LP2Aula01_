@@ -62,9 +62,9 @@ namespace CuteAnimal
         public Cat(string name) : this()
         {
             Name = name;
-            Console.WriteLine(random.Next(Energy));
-            Console.WriteLine(random.Next((int)moodStatus));
-            Console.WriteLine(random.Next((int)feedStatus));
+            Energy = random.Next(Energy);
+            random.Next((int)moodStatus);
+            random.Next((int)feedStatus);
         }
 
         /// <summary>
@@ -72,11 +72,10 @@ namespace CuteAnimal
         /// </summary>
         public void Eat()
         {
-            if(Energy < 40)
+            if(Energy < 40 || moodStatus == Mood.IgnoringYou)
             {
+                Console.WriteLine($"Cat: {Name} is eating.");
                 Energy += 20;
-
-                Console.WriteLine($"Cat {Name} is eating.");
             }
         }
 
@@ -85,9 +84,9 @@ namespace CuteAnimal
         /// </summary>
         public void Sleep()
         {
-            if(Energy < 10)
+            if(Energy < 10 || moodStatus == Mood.Grumpy)
             {
-                Console.WriteLine($"Cat {Name} is sleeping.");
+                Console.WriteLine($"Cat: {Name} is sleeping.");
                 Energy += 40;
             }
         }
@@ -97,8 +96,11 @@ namespace CuteAnimal
         /// </summary>
         public void Meow()
         {
-            moodStatus = Mood.Happy;
-            Console.WriteLine($"Cat {Name} says 'Meow'.");
+            if (moodStatus == Mood.Happy || moodStatus == Mood.IgnoringYou)
+            {
+                Console.WriteLine($"Cat: {Name} is 'Meowing'.");
+            }
+            
         }
 
         /// <summary>
@@ -106,12 +108,11 @@ namespace CuteAnimal
         /// </summary>
         public void Play()
         {
-            if(Energy > 70 && Energy <= 90)
+            if(Energy > 70 || Energy <= 100 && moodStatus == Mood.HyperActive)
             {
-                moodStatus = Mood.HyperActive;
-                feedStatus = Feed.Satisfied;
+                Console.WriteLine($"Cat: {Name} is playing with plastic ball.");
 
-                Console.WriteLine($"Cat {Name} is playing with plastic ball.");
+                Energy -= 50;
             }
         }
     }
